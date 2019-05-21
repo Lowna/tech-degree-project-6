@@ -15,14 +15,17 @@ var phrases = [
 // click to hide overlay
 $(start).on('click', function () {
 	$('#overlay').hide();
+	var randomPhrase = getRandomPhraseAsArray(phrases);
+	addPhraseToDisplay(randomPhrase);
+
 });
 
 //get random phrases
 function getRandomPhraseAsArray(arr) {
 	//remove decimals from the array selection
-	var randomPhrase = [Math.floor(Math.random()*phrases.length)];
+	var randomArrIndex = Math.floor(Math.random()*arr.length);
 	//select an array from the array random Phrases
-	var selectPhrase = arr[randomPhrase]
+	var selectPhrase = arr[randomArrIndex]
 	//split the array into a new array of characters
 	var splitArr = selectPhrase.split('')
 	return(splitArr)
@@ -34,13 +37,23 @@ getRandomPhraseAsArray(phrases);
 //set game display
 
 function addPhraseToDisplay(arr){
-	var newCharacter = splitArr;
-    for (var i =0; i < newCharacter.length; i += 0) {
-    	console.log('this kinda works');
-    }
+	for(var i = 0; i < arr.length; i += 1) {
+		var character = document.createElement('li');
+		character.innerHTML = arr[i];
+		character.classList.add('letter');
+		arr[i];
+		document.getElementById('phrase').children[0].appendChild(character);
+	}	
 }
-/*
-Create an addPhraseToDisplay function that loops through an array of characters. Inside the loop, for each character in the array, you’ll create a list item, put the character inside of the list item, and append that list item to the #phrase ul in your HTML. If the character in the array is a letter and not a space, the function should add the class “letter” to the list item.
-You’ll need to write the addPhraseToDisplay function so that it can take any array of letters and add it to the display. To do that, the function will need to take an array as a parameter:
 
-*/
+function checkLetter(button) {
+	var letters = document.getElementsByClassName('letter');
+	var match = null;
+	for(var i = 0; i < letters.length; i += 1) {
+		if (button.innerHTML == letters[i].innerHTML) {
+			letters[i].classList.add('show');
+			match = letters[i];
+		} 
+	}
+	return(match); 
+}
