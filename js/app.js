@@ -1,14 +1,14 @@
-var qwerty = $('#qwerty');
-var phrase = $('#phrase');
+var qwerty = document.getElementById('#qwerty');
+var phrase = document.getElementById('#phrase');
 
 var missed = 0;
-var start = $('.btn__reset');
+var start = document.querySelector('.btn__reset');
 
 var phrases = [
 	'Keep on coding',
 	'You got it',
 	'Knowledge is power',
-	'A warm sunny day',
+	'I need to learn Javascript',
 	'I am tired'
 ];
 
@@ -56,4 +56,10 @@ function checkLetter(button) {
 		} 
 	}
 	return(match); 
+}
+
+window.addEventListener("keydown", keysPressed, false);
+
+function keysPressed(e) {
+	alert('this works');
 }
