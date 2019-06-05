@@ -46,20 +46,14 @@ function reset() {
 start.onclick = reset;
 //get random phrases
 function getRandomPhraseAsArray(arr) {
-	//remove decimals from the array selection
 	var randomArrIndex = Math.floor(Math.random()*arr.length);
-	//select an array from the array random Phrases
 	var selectPhrase = arr[randomArrIndex]
-	//split the array into a new array of characters
 	var splitArr = selectPhrase.split('')
 	return(splitArr)
 }
-
-//call functions 
+ 
 getRandomPhraseAsArray(phrases);
-
-//set game display
-
+//add phrase to display 
 function addPhraseToDisplay(arr){
 	for(var i = 0; i < arr.length; i += 1) {
 		var character = document.createElement('li');
